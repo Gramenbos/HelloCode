@@ -1,7 +1,10 @@
 ﻿
-Console.Write("Введите число ->");
+Console.Write("Введите число -> ");
 
 string valueString = Console.ReadLine();
 
 int valueInt = int.Parse(valueString);
-Console.WriteLine("Вы ввели: " + valueInt);
+
+int square = valueInt * valueInt;
+
+Console.WriteLine("Квадрат числа " + valueInt + " равен " + square);
