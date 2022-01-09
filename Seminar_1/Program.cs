@@ -1,23 +1,49 @@
-﻿
-Console.WriteLine("Введите любое целое число: ");
-string? StringNumber = Console.ReadLine();
+﻿//34. Написать программу замену элементов массива на противоположные
 
-try
+void FillAndPrintArray(int[] array, int Min, int Max)
 {
-    Convert.ToInt32(StringNumber);
-    string Temp = StringNumber ?? "";
-    int Length = Temp.Length;
-    if (Length > 2)
+    Random rnd = new Random();
+    for (int i = 0; i < array.Length; i++)
     {
-        Console.WriteLine("Третья цифра: " + Temp[Length-3]);
+        array[i] = rnd.Next(Min, Max + 1);
+        Console.Write($"{array[i]} ");
     }
-    else
-    {
-        Console.WriteLine("Третьей цифры в числе нет!");
-    }
+}
 
-}
-catch
+(int, int) SumPositiveAndNegative(int[] Array)
 {
-    Console.WriteLine("Неверный ввод!");
+    int SumPositive = 0;
+    int SumNegative = 0;
+    for (int i = 0; i < Array.Length; i++)
+    {
+        if (Array[i] >= 0)
+            SumPositive += Array[i];
+        else
+            SumNegative += Array[i];
+    }
+    return (SumPositive, SumNegative);
 }
+
+void ReverseElements(int[] Array)
+{
+    for (int i = 0; i < Array.Length; i++)
+    {
+        Array[i] = -Array[i];
+    }
+}
+
+void PrintArray(int[] Array)
+{
+    foreach (int element in Array)
+        Console.Write($"{element}; ");
+    Console.WriteLine();
+}
+
+int[] Array = new int[12];
+FillAndPrintArray(Array, -9, 9);
+(int SumPositive, int SumNegative) = SumPositiveAndNegative(Array);
+Console.WriteLine();
+Console.WriteLine($"{SumPositive}, {SumNegative}");
+ReverseElements(Array);
+PrintArray(Array);
+
