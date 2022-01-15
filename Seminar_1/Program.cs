@@ -1,4 +1,4 @@
-﻿//34. Написать программу замену элементов массива на противоположные
+﻿//40. В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом
 
 void FillAndPrintArray(int[] array, int Min, int Max)
 {
@@ -8,42 +8,22 @@ void FillAndPrintArray(int[] array, int Min, int Max)
         array[i] = rnd.Next(Min, Max + 1);
         Console.Write($"{array[i]} ");
     }
-}
-
-(int, int) SumPositiveAndNegative(int[] Array)
-{
-    int SumPositive = 0;
-    int SumNegative = 0;
-    for (int i = 0; i < Array.Length; i++)
-    {
-        if (Array[i] >= 0)
-            SumPositive += Array[i];
-        else
-            SumNegative += Array[i];
-    }
-    return (SumPositive, SumNegative);
-}
-
-void ReverseElements(int[] Array)
-{
-    for (int i = 0; i < Array.Length; i++)
-    {
-        Array[i] = -Array[i];
-    }
-}
-
-void PrintArray(int[] Array)
-{
-    foreach (int element in Array)
-        Console.Write($"{element}; ");
     Console.WriteLine();
 }
 
-int[] Array = new int[12];
-FillAndPrintArray(Array, -9, 9);
-(int SumPositive, int SumNegative) = SumPositiveAndNegative(Array);
-Console.WriteLine();
-Console.WriteLine($"{SumPositive}, {SumNegative}");
-ReverseElements(Array);
-PrintArray(Array);
+(int, int) MinMaxArray(int[] array)
+{
+    int minNumber = array[0];
+    int maxNumber = array[0];
+    foreach (int number in array)
+    {
+        if (number < minNumber) minNumber = number;
+        if (number > maxNumber) maxNumber = number;
+    }
+    return (minNumber, maxNumber);
+}
 
+int[] Array = new int[12];
+FillAndPrintArray(Array, 0, 9);
+(int min, int max) = MinMaxArray(Array);
+Console.WriteLine($"Разница между максимальным и минимальным элементами массива равна {max - min}");
